@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.controller.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -6,13 +6,11 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import java.util.Objects;
-
 @Getter
 @Setter
 @NoArgsConstructor
-@Accessors(chain=true)
-public class mobileDeviceModel {
+@Accessors(chain = true)
+public class MobileDeviceRequest {
     public Long id;
     @NonNull
     private String brand;
@@ -22,11 +20,4 @@ public class mobileDeviceModel {
     private String os;
     @NonNull
     private String osVersion;
-
-    @Override //OOP
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
 }
-
