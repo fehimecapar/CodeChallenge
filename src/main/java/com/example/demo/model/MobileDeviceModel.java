@@ -1,30 +1,36 @@
 package com.example.demo.model;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
+//@Entity
 @Getter
 @Setter
-@NoArgsConstructor       
-//@Table(name="mobileDevices")
+@NoArgsConstructor
+@Table(name = "MobileDeviceTable")//table name
 public class MobileDeviceModel {
+    /*
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
-    @NonNull
+    * */
+    @NotNull @NotEmpty
     private String brand;
-    @NonNull
+    @NotNull @NotEmpty
     private String model;
-    @NonNull
+    @NotNull @NotEmpty
     private String os;
-    @NonNull
+    @NotNull @NotEmpty
     private String osVersion;
 
+    /*
     @Override //OOP
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
+    public int hashCode() { return Objects.hash(id); }
+    **/
 }
-
