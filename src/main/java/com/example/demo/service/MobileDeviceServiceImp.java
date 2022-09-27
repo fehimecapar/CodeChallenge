@@ -7,14 +7,12 @@ import java.util.HashSet;
 
 @Service
 public class MobileDeviceServiceImp implements MobileDeviceService{
-
     HashSet<MobileDeviceModel> mobileDeviceList = new HashSet<MobileDeviceModel>();
     @Override
     public void addMobileDevice(MobileDeviceModel md) {
         mobileDeviceList.add(md);
 
     }
-
     @Override
     public HashSet<MobileDeviceModel> getAllMobileDevice() {
         if(mobileDeviceList.isEmpty()){
@@ -24,4 +22,8 @@ public class MobileDeviceServiceImp implements MobileDeviceService{
             return mobileDeviceList;
         }
     }
+    /*@Override
+    public void deleteAllData(){
+        mobileDeviceList.clear();
+    }**/
 }

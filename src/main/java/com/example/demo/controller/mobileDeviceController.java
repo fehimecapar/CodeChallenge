@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.MobileDeviceModel;
 import com.example.demo.service.MobileDeviceServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 
@@ -16,12 +13,18 @@ public class MobileDeviceController {
     @Autowired
     MobileDeviceServiceImp mobileDeviceServiceImp;
 
-    @PostMapping("/")
-    public void addMobileDevice(@RequestBody MobileDeviceModel model){
-        mobileDeviceServiceImp.addMobileDevice(model);
-    }
-    @GetMapping("/getall")
+    @GetMapping("/get")
     public HashSet<MobileDeviceModel> getAllMobileDevice(){
         return mobileDeviceServiceImp.getAllMobileDevice();
     }
+
+    @PostMapping("/post")
+    public void addMobileDevice(@RequestBody MobileDeviceModel modelDeviceModel){
+        mobileDeviceServiceImp.addMobileDevice(modelDeviceModel);
+    }
+    /*@DeleteMapping("/delete")
+    public void deleteMobileDevice() {
+        mobileDeviceServiceImp.deleteAllData();
+    }**/
+
 }
