@@ -19,9 +19,11 @@ public class MobileDeviceController {
     }
 
     @PostMapping("/post")
-    public void addMobileDevice(@RequestBody MobileDeviceModel modelDeviceModel){
+    public String addMobileDevice(@RequestBody MobileDeviceModel modelDeviceModel){
         mobileDeviceServiceImp.addMobileDevice(modelDeviceModel);
+        return "mobile device has been added";
     }
+
     /*@DeleteMapping("/delete")
     public void deleteMobileDevice() {
         mobileDeviceServiceImp.deleteAllData();

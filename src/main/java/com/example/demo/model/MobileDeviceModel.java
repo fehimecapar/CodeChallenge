@@ -17,7 +17,7 @@ import java.util.Objects;
 public class MobileDeviceModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
     @NotNull @NotEmpty

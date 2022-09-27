@@ -11,7 +11,10 @@ public class MobileDeviceServiceImp implements MobileDeviceService{
     @Override
     public void addMobileDevice(MobileDeviceModel md) {
         mobileDeviceList.add(md);
-
+        md.setModel(md.getModel());
+        md.setBrand(md.getBrand());
+        md.setOs(md.getOs());
+        md.setOsVersion(md.getOsVersion());
     }
     @Override
     public HashSet<MobileDeviceModel> getAllMobileDevice() {
@@ -22,8 +25,5 @@ public class MobileDeviceServiceImp implements MobileDeviceService{
             return mobileDeviceList;
         }
     }
-    /*@Override
-    public void deleteAllData(){
-        mobileDeviceList.clear();
-    }**/
+
 }
