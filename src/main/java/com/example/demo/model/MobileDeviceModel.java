@@ -18,17 +18,22 @@ public class MobileDeviceModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long id;
+    @Column(name="id")
+    public int id;
 
+    @Column(name="model")
     @NotNull @NotEmpty
     private String model;
 
+    @Column(name="brand")
     @NotNull @NotEmpty
     private String brand;
 
+    @Column(name="os")
     @NotNull @NotEmpty
     private String os;
 
+    @Column(name="osVersion")
     @NotNull @NotEmpty
     private String osVersion;
 
