@@ -28,7 +28,7 @@ public class MobileDeviceController {
         return mobileDeviceService.getAllMobileDevice();
     }
     @GetMapping("/device")
-    public DataResult<List<MobileDeviceDto>> brandFilter(@RequestParam String brand){
+    public DataResult<List<MobileDeviceDto>> brandFilter(@RequestParam("brand") String brand){
         return mobileDeviceService.getAllMobileDevice();
     }
 
