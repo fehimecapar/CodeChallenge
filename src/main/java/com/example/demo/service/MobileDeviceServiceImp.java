@@ -87,7 +87,7 @@ public class MobileDeviceServiceImp implements MobileDeviceService{
 
     @Override
     public DataResult<List<MobileDeviceDto>> brandAndOsVersionFilter(String brand, String osVersion, int page, int size) {
-        Pageable paging = PageRequest.of(page-1, size);
+        Pageable paging = PageRequest.of(page, size);
         List<MobileDeviceModel> mobileDeviceModelsByBrandAndModelsByOsVersion = mobileDeviceRepository.findMobileDeviceModelsByBrandAndOsVersion(brand, osVersion, paging);
         mobileDeviceDtos = new ArrayList<>();
         for (MobileDeviceModel mobileDeviceModel : mobileDeviceModelsByBrandAndModelsByOsVersion) {
