@@ -28,4 +28,9 @@ url: http://localhost:8080/md/devices?brand=Apple&osVersion=12.4.1&page=1&size=5
 
 ![Message From brand Method](https://github.com/fehimecapar/CodeChallenge/blob/development/Images/listed_data_b_o_p.png)
 
+Mobile Device Tablosu
+
+![Message From brand Method](https://github.com/fehimecapar/CodeChallenge/blob/development/Images/mobile_device_table.png)
+
+
 
