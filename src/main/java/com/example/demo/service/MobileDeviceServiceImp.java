@@ -10,7 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
 import java.util.*;
 
 @Service
@@ -26,6 +25,7 @@ public class MobileDeviceServiceImp implements MobileDeviceService{
     @Override
     public DataResult<List<MobileDeviceDto>> addMobileDevices(List<MobileDeviceDto> modelDeviceDto) {
 
+        // I defined List method due to i want to save multiple data
         List<MobileDeviceModel> list = new ArrayList<>();
         try {
             for (MobileDeviceDto mobileDeviceDto : modelDeviceDto) {
@@ -40,9 +40,7 @@ public class MobileDeviceServiceImp implements MobileDeviceService{
                 list.add(md);
             }
             mobileDeviceRepository.saveAll(list);
-            //mobileDeviceRepository.saveAllAndFlush(list.add(md));
-
-            return new SuccessDataResult<>(modelDeviceDto,"Data saved to database");
+            return new SuccessDataResult<>(modelDeviceDto,"Datas saved to database");
         }catch (Exception e){
             return new ErrorDataResult<>(modelDeviceDto, e.getMessage());
         }
@@ -59,6 +57,7 @@ public class MobileDeviceServiceImp implements MobileDeviceService{
             md.setBrand(modelDeviceDto.getBrand());
             md.setOs(modelDeviceDto.getOs());
             md.setOsVersion(modelDeviceDto.getOsVersion());
+            //mobileDeviceRepository.save(md);
             mobileDeviceRepository.saveAndFlush(md);
             return new SuccessDataResult<>("Data Saved");
         }catch (Exception e){
@@ -87,7 +86,7 @@ public class MobileDeviceServiceImp implements MobileDeviceService{
 
     @Override
     public DataResult<List<MobileDeviceDto>> brandAndOsVersionFilter(String brand, String osVersion, int page, int size) {
-        Pageable paging = PageRequest.of(page, size);
+        Pageable paging = PageRequest.of(page, size); // pagination process with page and size value. We get page and size from controller page
         List<MobileDeviceModel> mobileDeviceModelsByBrandAndModelsByOsVersion = mobileDeviceRepository.findMobileDeviceModelsByBrandAndOsVersion(brand, osVersion, paging);
         mobileDeviceDtos = new ArrayList<>();
         for (MobileDeviceModel mobileDeviceModel : mobileDeviceModelsByBrandAndModelsByOsVersion) {
@@ -98,11 +97,12 @@ public class MobileDeviceServiceImp implements MobileDeviceService{
             mdd.setOs(mobileDeviceModel.getOs());
             mdd.setOsVersion(mobileDeviceModel.getOsVersion());
 
-            mobileDeviceDtos.add(mdd);//md değeri boş dönüyor ve debug'a girmiyor
+            mobileDeviceDtos.add(mdd);
         }
-        return new SuccessDataResult<>(mobileDeviceDtos,"Data listed by brand and model");
+        return new SuccessDataResult<>(mobileDeviceDtos,"Data listed by brand and osVersion");
     }
 
+    // os version controle. Os must be Android or ios
     private void osControle(String os) throws Exception {
 
         if(!os.equalsIgnoreCase("Android") && !os.equalsIgnoreCase("IOS")) {
@@ -110,6 +110,7 @@ public class MobileDeviceServiceImp implements MobileDeviceService{
         }
     }
 
+    // Checking the status of not adding the data in the table to the table again
     private void modelBrandOsVersionControle(String model, String brand, String osVersion) throws Exception{
         List<MobileDeviceModel> mobileDeviceModels = mobileDeviceRepository.findAll();
         mobileDeviceDtos = new ArrayList<>();
