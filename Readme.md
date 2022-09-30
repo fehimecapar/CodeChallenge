@@ -11,7 +11,7 @@ Tüm veriler ekranda gösterildi
 
 ![Message From get Method](https://github.com/fehimecapar/CodeChallenge/blob/development/Images/getAll.png)
 
-İşletim sisteminin IOS ya daAndroid olması şartı eklendi. Yanlış veri ekleme durumunda hata mesajı gönderildi
+İşletim sisteminin IOS ya da Android olması şartı eklendi. Yanlış veri ekleme durumunda hata mesajı gönderildi
 
 ![Message From get Method](https://github.com/fehimecapar/CodeChallenge/blob/development/Images/post_error.png)
 
